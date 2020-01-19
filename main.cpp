@@ -2,7 +2,6 @@
 #include <SFML/Window.hpp>
 #include "ball.h"
 #include "player.h"
-#include "enemy.h"
 #include <iostream>
 
 bool doesIntersect(Player& a, Ball& b) 
@@ -16,8 +15,6 @@ bool test(Player& player,Ball& ball) //test
 	if (!doesIntersect(player, ball)){ 
 		return false;
 	}
-	if(doesIntersect){
-	//std::cout<<"hit"<<std::endl;
 	ball.moveUp();
 	if (ball.getPosition().x < player.getPosition().x)
 	{
@@ -28,7 +25,6 @@ bool test(Player& player,Ball& ball) //test
 		ball.moveRight();
 	}
 		//player.reset();
-	}
 }
 
 int main()
@@ -36,7 +32,6 @@ int main()
 
 	Ball ball(400, 300);
 	Player player(400, 570);
-	enemy Enemy(400, 20);
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "FirstGame");
 		window.setFramerateLimit(60);
@@ -51,11 +46,10 @@ int main()
 		window.clear();
 		ball.update();
 		player.update();	
-		test(player, ball);
 		window.draw(ball);
 		window.draw(player);
-		window.draw(Enemy);
 		window.display();
+		test(player, ball);
 	}
 	
 

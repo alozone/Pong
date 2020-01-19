@@ -27,10 +27,10 @@ void Ball::update() {
 	{
 		Movement.y = ballSpeed;
 	}
-	/*else if (bottom() > 600) //jezeli wartosc pilki jest wieksza od 800 jej wektor si� zmienia
+	else if (bottom() > 600) //jezeli wartosc pilki jest wieksza od 800 jej wektor si� zmienia
 	{
 		Movement.y = -ballSpeed;
-	}*/
+	}
 }
 
 float Ball::left(){				

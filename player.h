@@ -11,8 +11,6 @@ public sf::Drawable
 		float length=80;
 		float left(),right(),top(),bottom();
 		sf::Vector2f getPosition(); 
-		short x=400;
-		short y=300;
 		sf::Window window;
 	private:
 		sf::RectangleShape ply;
