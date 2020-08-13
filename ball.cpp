@@ -8,7 +8,7 @@ Ball::Ball(float X, float Y) {
 	circle.setFillColor(sf::Color::White);
 	circle.setOrigin(this->circleRadius, this->circleRadius);
 	}
-void Ball::draw(sf::RenderTarget& target, sf::RenderStates state) const //<- Oddanie naszego narysowanego obiektu dla okna
+void Ball::draw(sf::RenderTarget& target, sf::RenderStates state) const //<- Drawing the object to the window
 {
 	target.draw(circle, state);
 }
@@ -27,7 +27,7 @@ void Ball::update() {
 	{
 		Movement.y = ballSpeed;
 	}
-	else if (bottom() > 600) //jezeli wartosc pilki jest wieksza od 800 jej wektor si� zmienia
+	else if (bottom() > 600) 
 	{
 		Movement.y = -ballSpeed;
 	}
