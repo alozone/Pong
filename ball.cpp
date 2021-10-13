@@ -1,5 +1,5 @@
 #include "ball.h"
-
+#include <iostream>
 
 Ball::Ball(float X, float Y) {
 	circle.setPosition(X, Y);
@@ -19,7 +19,7 @@ void Ball::update() {
 	{
 		Movement.x = ballSpeed;
 	}
-	else if (right() > 800)
+	else if (right() >= 800)
 	{
 		Movement.x = -ballSpeed;
 	}
@@ -38,7 +38,7 @@ float Ball::left(){
 }
 
 float Ball::right() {
-	return circle.getPosition().x - circle.getRadius();
+	return circle.getPosition().x + circle.getRadius();
 }
 
 float Ball::top() {

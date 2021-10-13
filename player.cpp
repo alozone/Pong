@@ -27,7 +27,7 @@ void Player::update()
 	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))) {
 		plyMovement.x = speed;	
 	}
-	else if(left()==0 && right()==800)
+	else if(left()<0 || right()>800)
 		plyMovement.x*=-1;
 
 }

@@ -15,7 +15,13 @@ bool test(Player& player,Ball& ball) //test
 	if (!doesIntersect(player, ball)){ 
 		return false;
 	}
+	else if(player.right() <= ball.left() && player.left() >= ball.right() 
+			&& player.bottom() >= ball.top() && player.top() <= ball.bottom()){
+				ball.moveUp();
+	}
+
 	ball.moveUp();
+	std::cout<<"Does intersect!??!"<<std::endl;
 	if (ball.getPosition().x < player.getPosition().x)
 	{
 		ball.moveLeft();
@@ -24,8 +30,17 @@ bool test(Player& player,Ball& ball) //test
 	{
 		ball.moveRight();
 	}
-		//player.reset();
+		
 }
+
+void testY(Player& player, Ball& ball)
+{
+	if(ball.getPosition().y == player.getPosition().y){
+		std::cout<<"Player x: "<<player.getPosition().x<<std::endl;
+		std::cout<<"Ball x: "<<ball.getPosition().x<<std::endl;
+	}
+}
+
 
 int main()
 {
@@ -50,6 +65,7 @@ int main()
 		window.draw(player);
 		window.display();
 		test(player, ball);
+		testY(player, ball);
 	}
 	
 
