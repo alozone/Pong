@@ -4,38 +4,25 @@
 #include "player.h"
 #include <iostream>
 
-/*bool doesIntersect(Player& a, Ball& b) 
-{ //checking that points will intersect
-	return a.right() >= b.left() && a.left() <= b.right() 
-		&& a.bottom() >= b.top() && a.top() <= b.bottom();
-}*/
 
 bool intersect(Player& a,Ball& b) //test
 {
-	if (a.left() >= b.right() && a.right() <= b.right() && a.top() <= b.bottom()){
+	if (b.getPosition().x >= a.left() && b.getPosition().x <= a.right() && b.getPosition().y >= a.getPosition().y){
 		return true;
 	}
-	else {
-		return false;
-	}
+	return false;
 }
 
-void test(Player& a, Ball& b)
+void test(Player& a, Ball& b, sf::RenderWindow& window)
 {
-	if(!intersect(a,b))
-		a.reset();
+	
 	if(intersect(a,b))
 		b.moveUp();
-}
 
-void testY(Player& player, Ball& ball)
-{
-	if(ball.getPosition().y == player.getPosition().y){
-		std::cout<<"Player x: "<<player.getPosition().x<<std::endl;
-		std::cout<<"Ball x: "<<ball.getPosition().x<<std::endl;
-	}
+	else if(b.getPosition().y > a.getPosition().y)
+		window.close();
+	
 }
-
 
 int main()
 {
@@ -43,7 +30,7 @@ int main()
 	Ball ball(400, 300);
 	Player player(400, 570);
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "FirstGame");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Pong");
 		window.setFramerateLimit(60);
 	while (window.isOpen())
 	{
@@ -59,8 +46,7 @@ int main()
 		window.draw(ball);
 		window.draw(player);
 		window.display();
-		test(player, ball);
-		testY(player, ball);
+		test(player, ball, window);
 	}
 	
 
