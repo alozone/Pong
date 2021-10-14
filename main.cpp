@@ -4,33 +4,28 @@
 #include "player.h"
 #include <iostream>
 
-bool doesIntersect(Player& a, Ball& b) 
+/*bool doesIntersect(Player& a, Ball& b) 
 { //checking that points will intersect
 	return a.right() >= b.left() && a.left() <= b.right() 
 		&& a.bottom() >= b.top() && a.top() <= b.bottom();
-}
+}*/
 
-bool test(Player& player,Ball& ball) //test
+bool intersect(Player& a,Ball& b) //test
 {
-	if (!doesIntersect(player, ball)){ 
+	if (a.left() >= b.right() && a.right() <= b.right() && a.top() <= b.bottom()){
+		return true;
+	}
+	else {
 		return false;
 	}
-	else if(player.right() <= ball.left() && player.left() >= ball.right() 
-			&& player.bottom() >= ball.top() && player.top() <= ball.bottom()){
-				ball.moveUp();
-	}
+}
 
-	ball.moveUp();
-	std::cout<<"Does intersect!??!"<<std::endl;
-	if (ball.getPosition().x < player.getPosition().x)
-	{
-		ball.moveLeft();
-	}
-	else if (ball.getPosition().x > player.getPosition().x)
-	{
-		ball.moveRight();
-	}
-		
+void test(Player& a, Ball& b)
+{
+	if(!intersect(a,b))
+		a.reset();
+	if(intersect(a,b))
+		b.moveUp();
 }
 
 void testY(Player& player, Ball& ball)
