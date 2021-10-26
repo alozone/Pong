@@ -56,17 +56,3 @@ float Player::bottom()
 {
 	return ply.getPosition().x + ply.getSize().x/2;
 }
-
-void Player::scoretext(sf::RenderWindow& window)
-{
-	//how to draw a text from a class to the window
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	string str = to_string(score);
-	sf::Text text(str, font);
-	text.setCharacterSize(30);
-	text.setStyle(sf::Text::Bold);
-	text.setFillColor(sf::Color::Red);
-
-	window.draw(text);
-}

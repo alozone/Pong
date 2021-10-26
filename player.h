@@ -8,7 +8,6 @@ public sf::Drawable
 		Player(float, float);
 		void update();
 		void reset();
-		void scoretext(sf::RenderWindow&);
 		float length=80;
 		float left(),right(),top(),bottom();
 		int score = 0;
