@@ -16,8 +16,11 @@ bool intersect(Player& a,Ball& b) //test
 void test(Player& a, Ball& b, sf::RenderWindow& window)
 {
 	
-	if(intersect(a,b))
+	if(intersect(a,b)){
 		b.moveUp();
+	  a.score+=1;
+		std::cout<<"score: "<<a.score<<std::endl;
+		}
 
 	else if(b.getPosition().y > a.getPosition().y)
 		window.close();
@@ -45,6 +48,7 @@ int main()
 		player.update();	
 		window.draw(ball);
 		window.draw(player);
+		player.scoretext(window);
 		window.display();
 		test(player, ball, window);
 	}
